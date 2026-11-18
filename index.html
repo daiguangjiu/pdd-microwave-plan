@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>拼多多二手微波炉运营方案 · 精简版 V2</title>
+<style>
+:root{--bg:#f3f5f9;--card:#fff;--ink:#1e2635;--sub:#5c6879;--faint:#8a94a4;--brand:#e8541e;--brand-soft:#fff1ea;--blue:#1a56c4;--blue-soft:#eef4ff;--line:#e5e9f0;--ok:#0f9d58;--ok-soft:#eafaf1;--warn:#e08a00;--warn-soft:#fff7e6;--danger:#d93025;--danger-soft:#fdecea;--shadow:0 2px 14px rgba(28,42,70,.06);--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px 70px}
+.hero{background:linear-gradient(125deg,#14213b 0%,#1d3a6b 55%,#e8541e 160%);color:#fff;border-radius:0 0 26px 26px;padding:34px 0 26px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(232,84,30,.35),transparent 70%)}
+.hero .wrap{position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:5px 13px;border-radius:30px;font-size:12.5px;margin-bottom:12px}
+.hero h1{font-size:29px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px}
+.hero p{font-size:14.5px;color:#d6e0f0;max-width:900px}
+.meta{display:flex;flex-wrap:wrap;gap:20px;margin-top:16px;font-size:13px;color:#c3d0e6}
+.meta b{display:block;color:#fff;font-size:14.5px}
+.core{margin-top:18px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start}
+.core .k{background:var(--brand);color:#fff;font-weight:800;font-size:12px;padding:3px 10px;border-radius:6px;white-space:nowrap;margin-top:2px}
+.core .v{font-size:14px;color:#fff;line-height:1.65}.core .v b{color:#ffd7c2}
+.tabbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);box-shadow:0 4px 18px rgba(28,42,70,.05)}
+.tabbar .wrap{display:flex;gap:2px;overflow-x:auto}
+.tab{flex:0 0 auto;padding:14px 14px 12px;font-size:14px;font-weight:600;color:var(--sub);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:.18s;display:flex;align-items:center;gap:7px}
+.tab:hover{color:var(--ink)}.tab.active{color:var(--brand);border-bottom-color:var(--brand)}
+.tab .num{font-size:11px;background:var(--bg);border:1px solid var(--line);width:20px;height:20px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;color:var(--faint)}
+.tab.active .num{background:var(--brand-soft);border-color:#f6c9b6;color:var(--brand)}
+.panel{display:none;padding-top:24px;animation:fade .3s}.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sec{margin-bottom:26px}
+.sec-h{display:flex;align-items:center;gap:11px;margin-bottom:13px}
+.sec-h .bar{width:5px;height:23px;border-radius:3px;background:linear-gradient(var(--brand),#ff8a4c)}
+.sec-h h2{font-size:19px;font-weight:800}
+.sec-h .tag{font-size:11.5px;color:var(--sub);background:var(--bg);border:1px solid var(--line);padding:3px 10px;border-radius:20px}
+.lead{font-size:14px;color:var(--sub);margin-bottom:13px;max-width:980px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:19px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.callout{border-radius:12px;padding:13px 16px;font-size:13.8px;line-height:1.7;border:1px solid;display:flex;gap:11px;margin:11px 0}
+.callout .ic{flex:0 0 auto;font-weight:800;width:23px;height:23px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff;margin-top:1px}
+.c-blue{background:var(--blue-soft);border-color:#c9d9f7;color:#1b3b78}.c-blue .ic{background:var(--blue)}
+.c-orange{background:var(--brand-soft);border-color:#f6c9b6;color:#8a3a15}.c-orange .ic{background:var(--brand)}
+.c-green{background:var(--ok-soft);border-color:#b7e7ce;color:#0b6b3d}.c-green .ic{background:var(--ok)}
+.c-red{background:var(--danger-soft);border-color:#f3c1bc;color:#8f2019}.c-red .ic{background:var(--danger)}
+.c-yellow{background:var(--warn-soft);border-color:#f5dda6;color:#8a5a00}.c-yellow .ic{background:var(--warn)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:15px 17px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat .lbl{font-size:12.5px;color:var(--sub);margin-bottom:5px}.stat .val{font-size:24px;font-weight:800;letter-spacing:-.5px}
+.stat .note{font-size:12px;color:var(--faint);margin-top:4px}.stat .accent{position:absolute;left:0;top:0;bottom:0;width:4px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;white-space:nowrap}
+thead th{background:#f7f9fc;font-weight:700;color:#33405a;font-size:12px}
+tbody tr:hover{background:#fbfcfe}tbody tr:last-child td{border-bottom:none}
+.mono{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5c6879}
+.miss{color:var(--danger);font-size:12px}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px}
+.p-g{background:var(--ok-soft);color:var(--ok);border:1px solid #b7e7ce}
+.p-b{background:var(--warn-soft);color:var(--warn);border:1px solid #f5dda6}
+.p-w{background:var(--danger-soft);color:var(--danger);border:1px solid #f3c1bc}
+.p-rec{background:var(--ok-soft);color:var(--ok);border:1px solid #b7e7ce}
+.st-ok{color:var(--ok);font-weight:700}.st-sold{color:var(--faint)}.st-lock{color:var(--warn);font-weight:700}.st-pend{color:var(--danger);font-weight:700}
+.floor{color:var(--faint);font-size:11px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:11px}
+.fbtn{font-size:12.5px;font-weight:600;padding:6px 14px;border:1px solid var(--line);border-radius:20px;background:#fff;color:var(--sub);cursor:pointer}
+.fbtn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+.chk{list-style:none;font-size:13.3px}.chk li{padding:4px 0 4px 22px;position:relative}
+.chk li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+.chk.x li::before{content:"✕";color:var(--danger)}
+ol.steps{margin-left:20px;font-size:14px}ol.steps li{padding:5px 0}
+ul.dot{margin-left:20px;font-size:14px}ul.dot li{padding:4px 0}
+.footer{text-align:center;color:var(--faint);font-size:12px;padding:26px 0 0;border-top:1px solid var(--line);margin-top:34px}
+.hl{background:linear-gradient(transparent 62%,#ffe0cf 62%);font-weight:700}
+.note-src{font-size:12px;color:var(--faint);margin-top:8px;line-height:1.7}
+/* 价格卡 */
+.pricecard{border-radius:14px;padding:20px;color:#fff;position:relative;overflow:hidden}
+.pricecard.a{background:linear-gradient(135deg,#0f7a4d,#0f9d58)}
+.pricecard.b{background:linear-gradient(135deg,#b56500,#e08a00)}
+.pricecard .t{font-size:13px;opacity:.9}
+.pricecard .p{font-size:42px;font-weight:800;letter-spacing:-1px;margin:6px 0 2px}
+.pricecard .p small{font-size:16px;font-weight:500}
+.pricecard .f{display:inline-block;background:rgba(255,255,255,.2);border-radius:8px;padding:4px 12px;font-size:13px;margin-top:6px}
+/* 对标图 */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.gitem{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;cursor:pointer;transition:.2s}
+.gitem:hover{box-shadow:0 8px 24px rgba(28,42,70,.14);transform:translateY(-2px)}
+.gitem img{width:100%;display:block}
+.gitem .cap{padding:9px 11px;font-size:12.5px;color:var(--sub);border-top:1px solid var(--line)}
+.gitem .cap b{color:var(--ink);display:block;font-size:13px}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(10,16,28,.86);z-index:100;align-items:center;justify-content:center;padding:24px}
+.lightbox.show{display:flex}.lightbox img{max-width:92%;max-height:92%;border-radius:10px}
+/* 价格轴 */
+.axis{position:relative;height:66px;margin:24px 8px 8px;background:linear-gradient(90deg,#eafaf1,#fff7e6,#fdecea);border-radius:10px;border:1px solid var(--line)}
+.axis .seg{position:absolute;top:0;bottom:0;border-left:2px dashed rgba(0,0,0,.12);font-size:11px;color:var(--faint);padding:4px 0 0 5px}
+.axis .dot2{position:absolute;top:26px;transform:translateX(-50%);text-align:center;font-size:11px;font-weight:700}
+.axis .dot2 span{display:block;background:var(--ink);color:#fff;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.axis .dot2.me span{background:var(--brand)}
+.axis .dot2::after{content:"";display:block;width:2px;height:10px;background:var(--ink);margin:0 auto}
+.axis .dot2.me::after{background:var(--brand)}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+<span class="badge">运营方案 · 精简版 <b>V2.0</b> · 含对标实拍与新定价</span>
+<h1>拼多多二手微波炉运营方案</h1>
+<p>基于 9 张对标店铺实拍 + 渔集 WMS 真实批次数据重写。策略收敛为一条主线：成色档标准化链接 + 明确定价梯度 + 一物一码实拍确认。</p>
+<div class="meta">
+<span>新定价<b>A档 ¥189/底179 · B档 ¥169/底159</b></span>
+<span>对标样本<b>4 家店 · 9 张实拍</b></span>
+<span>落地批次<b>嘉定微波炉（卢总）100 台</b></span>
+<span>日期<b>2026-11-18</b></span>
+</div>
+<div class="core"><span class="k">一句话</span><span class="v">用户对标店的真实打法是 <b>"二手 + 功能词标题 + 仓库实拍大字图 + 首件立减 + 区域限制"</b>；我们沿用这套已被验证的打法，但用 <b>A/B 成色分档 + 发货前实拍确认</b> 把二手非标的退款风险压住。不做一物一链接，型号缺失不影响起步。</span></div>
+</div></div>
+
+<div class="tabbar"><div class="wrap">
+<div class="tab active" data-t="intel"><span class="num">1</span>对标情报</div>
+<div class="tab" data-t="price"><span class="num">2</span>定价策略</div>
+<div class="tab" data-t="listing"><span class="num">3</span>链接与上架</div>
+<div class="tab" data-t="matrix"><span class="num">4</span>店铺与矩阵</div>
+<div class="tab" data-t="launch"><span class="num">5</span>冷启动</div>
+<div class="tab" data-t="batch"><span class="num">6</span>嘉定批次落地</div>
+</div></div>
+
+<div class="wrap">
+
+<!-- 1 对标情报 -->
+<div class="panel active" id="intel">
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>四家对标店 · 真实数据</h2><span class="tag">9 张实拍截图</span></div>
+<div class="tw"><table>
+<thead><tr><th>店铺</th><th>销量规模</th><th>主力成交价</th><th>走的什么量</th><th>核心打法</th></tr></thead>
+<tbody>
+<tr><td><b>许小儿的店</b><br><span class="pill p-g">3年老店</span></td><td>近期已拼 <b>1.6万件</b><br>2.8万+收藏 · 1.2万好评</td><td><b>¥142-169</b><br>首件立减10元后</td><td>单价144已抢4807件、142已抢2515件、163已抢212件</td><td>全店满180减9 / 2件9.5折 / 3件9.3折；"清洗干净回家直接用""随机发货"大字图</td></tr>
+<tr><td><b>微波炉零售店</b><br><span class="pill p-g">6年老店</span></td><td>近期已拼 <b>5649件</b></td><td><b>¥155-198</b></td><td>155已抢4882件、175已抢162件、165已抢121件</td><td>标题写"只发江浙沪皖，商用和要求高的别拍"——主动筛客降售后</td></tr>
+<tr><td><b>高先生的商铺2911</b></td><td>本店已拼 <b>1413件</b></td><td><b>¥157-199</b></td><td>199已拼275件、157已拼148件、165已拼141件</td><td>标题堆功能词："二旧格兰仕微波炉家用小型20转盘多功能旋钮机械式"</td></tr>
+<tr><td><b>静子家的商铺1068</b></td><td>近期已拼 <b>435件</b></td><td><b>¥133-184</b></td><td>165已抢151件（近98天100%好评）</td><td>顺带卖电磁炉做品类延展；立减25元</td></tr>
+</tbody></table></div>
+<div class="callout c-green"><span class="ic">✓</span><div><b>共同规律：全部如实写"二手/二旧"</b>，标题里几乎不写具体型号，而是堆"家用 + 功能词 + 容量 + 限制条件"。主图是<b>仓库堆货实拍 + 醒目的紫色/红色大字</b>，不是精修白底图。价格集中在 ¥142-199，走量主力 ¥155-175。</div></div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>对标实拍截图</h2><span class="tag">点击放大</span></div>
+<div class="gallery">
+<div class="gitem" data-src="images/微信图片_20261118114843_1192_27.jpg"><img src="images/微信图片_20261118114843_1192_27.jpg" loading="lazy"><div class="cap"><b>许小儿的店 · 网格</b>163/164.99，"清洗干净""随机发货"大字</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114844_1193_27.jpg"><img src="images/微信图片_20261118114844_1193_27.jpg" loading="lazy"><div class="cap"><b>许小儿的店 · 列表</b>144已抢4807件 / 142已抢2515件，满180减9</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114842_1191_27.jpg"><img src="images/微信图片_20261118114842_1191_27.jpg" loading="lazy"><div class="cap"><b>高先生的商铺 · 列表</b>157/165/199，标题堆功能词</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114841_1190_27.jpg"><img src="images/微信图片_20261118114841_1190_27.jpg" loading="lazy"><div class="cap"><b>高先生的商铺 · 网格</b>24小时50+人拼单</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114846_1196_27.jpg"><img src="images/微信图片_20261118114846_1196_27.jpg" loading="lazy"><div class="cap"><b>微波炉零售店 · 网格</b>155已抢4882件，"只发江浙沪皖"</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114847_1197_27.jpg"><img src="images/微信图片_20261118114847_1197_27.jpg" loading="lazy"><div class="cap"><b>微波炉零售店 · 列表</b>165/175/188/198，100%好评背书</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114844_1194_27.jpg"><img src="images/微信图片_20261118114844_1194_27.jpg" loading="lazy"><div class="cap"><b>静子家的商铺</b>165已抢151件，立减25元</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114848_1198_27.jpg"><img src="images/微信图片_20261118114848_1198_27.jpg" loading="lazy"><div class="cap"><b>自家店 · 网格</b>太阳味汽水s，199/189/169，"仅剩1件"</div></div>
+<div class="gitem" data-src="images/微信图片_20261118114845_1195_27.jpg"><img src="images/微信图片_20261118114845_1195_27.jpg" loading="lazy"><div class="cap"><b>自家店 · 列表</b>标题写全新型号，混卖洗地机</div></div>
+</div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>自家店现状 · 三个硬伤</h2><span class="tag">"太阳味汽水s"</span></div>
+<div class="grid g3">
+<div class="card"><div class="pill p-w" style="margin-bottom:8px">硬伤 1 · 店铺定位</div><h3 style="font-size:15px">店名与品类无关</h3><p class="mini" style="margin-top:6px">店名"太阳味汽水s"，却卖微波炉 + UWANT洗地机 + 米家洗地机。平台无法给你打上"二手家电"人群标签，推荐流量不精准。近期本店仅拼 2 件。</p></div>
+<div class="card"><div class="pill p-w" style="margin-bottom:8px">硬伤 2 · 标题逻辑</div><h3 style="font-size:15px">用全新品逻辑写二手货</h3><p class="mini" style="margin-top:6px">标题写"美的(Midea)微波炉 M1-L213B"等具体型号，不写"二手"，实际是二手孤品。既错失"二手微波炉"搜索词，又有以旧充新的合规隐患。</p></div>
+<div class="card"><div class="pill p-w" style="margin-bottom:8px">硬伤 3 · 链接结构</div><h3 style="font-size:15px">每件"仅剩1件"</h3><p class="mini" style="margin-top:6px">典型闲鱼一物一链接逻辑搬到了拼多多。每条链接 0 销量 0 评价，无法积累权重、报不了活动——这正是方案要改掉的核心。</p></div>
+</div>
+<div class="callout c-red"><span class="ic">!</span><div><b>三处必须改，否则新定价也救不回：</b>① 店铺改名/重开聚焦"二手家电"；② 标题改成对标店那套"二手+功能词"；③ 从"一物一链接"改成"成色档合并链接"。详见后续 Tab。</div></div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>三处策略修正（相对上一版）</h2></div>
+<div class="tw"><table>
+<thead><tr><th>议题</th><th>上一版判断</th><th>本版修正（依据实拍）</th></tr></thead>
+<tbody>
+<tr><td><b>"随机发货"用词</b></td><td>判为违规变异词，建议禁用</td><td class="st-ok">✓ 对标店大面积在用且跑出高销量（许小儿"随机发货"已抢985件）。治理公告针对的是<b>二手服饰直播以旧充新</b>；二手家电图文如实标"二手+成色档"后用"随机发货"属真实描述。<b>放开使用，但需如实标注成色、披露瑕疵。</b></td></tr>
+<tr><td><b>标题写型号</b></td><td>建议"品牌+型号前置"</td><td class="st-ok">✓ 对标店几乎不写型号，写"二手+功能词+容量+限制条件"。你这批 98 台无型号反而<b>因祸得福</b>——按对标套路写即可，不必补型号才能上架。</td></tr>
+<tr><td><b>主图风格</b></td><td>5 张分区实拍</td><td class="st-ok">✓ 结构保留，但主图必须加<b>醒目大字文案</b>（"清洗干净 回家直接用""现货秒发"），用仓库堆货真实感，不要精修白底图。</td></tr>
+</tbody></table></div>
+</div>
+</div>
+
+<!-- 2 定价 -->
+<div class="panel" id="price">
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>新定价（已确认执行）</h2></div>
+<div class="grid g2">
+<div class="pricecard a"><div class="t">A 级 · 9成新（微瑕）</div><div class="p">¥189 <small>对外标价</small></div><div class="f">底线成交 ¥179 · 让价空间 ¥10</div></div>
+<div class="pricecard b"><div class="t">B 级 · 8成新（瑕疵/可卖）</div><div class="p">¥169 <small>对外标价</small></div><div class="f">底线成交 ¥159 · 让价空间 ¥10</div></div>
+</div>
+<div class="callout c-blue"><span class="ic">i</span><div><b>定价让价纪律：</b>客服议价时 A 档不低于 179、B 档不低于 159。用"运费险 + 小赠品（清洁布/置物架）"替代继续降价，保住价格锚点与利润。</div></div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>定价 vs 对标价格带</h2><span class="tag">位置判断</span></div>
+<div class="axis">
+<div class="seg" style="left:0">¥140</div><div class="seg" style="left:33%">¥160</div><div class="seg" style="left:66%">¥180</div><div class="seg" style="left:97%">¥200</div>
+<div class="dot2" style="left:8%"><span>对标底价 142</span></div>
+<div class="dot2" style="left:45%"><span>对标走量 155-165</span></div>
+<div class="dot2 me" style="left:75%"><span>我们B档 169</span></div>
+<div class="dot2 me" style="left:100%"><span>我们A档 189</span></div>
+</div>
+<p class="note-src">注意：轴仅示意相对位置（跨度¥140-200）。</p>
+<div class="callout c-yellow"><span class="ic">!</span><div><b>必须正视的差距：</b>你的 A189 / B169 高于对标<b>走量主力价 ¥155-165</b>。对标店能卖低价还有钱赚，靠的是几千上万件的销量权重 + 供应链成本优势（你说"货源是同一个地方"，那成本应接近）。新店 0 销量按此价切入，转化会偏低——必须用下面三件事撑住溢价，否则应按底线价破局。</div></div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>撑住溢价的三件事</h2></div>
+<div class="grid g3">
+<div class="card"><div class="pill p-rec">支撑 1</div><h3 style="font-size:15px;margin:8px 0 5px">成色差异化</h3><p class="mini">对标店混卖不分档。我们明确标"A档9成新微瑕"，用成色更好、清洗干净的实拍证明，"贵20块但成色看得见"。</p></div>
+<div class="card"><div class="pill p-rec">支撑 2</div><h3 style="font-size:15px;margin:8px 0 5px">功能检测背书</h3><p class="mini">每台附 15 秒加热/转盘检测视频 + "近30天0差评"式承诺（真实数据），对标店高频用"100%好评"打信任，我们照做。</p></div>
+<div class="card"><div class="pill p-rec">支撑 3</div><h3 style="font-size:15px;margin:8px 0 5px">发货前实拍确认</h3><p class="mini">对标店写"随机发货"靠低价兜底；我们不行，必须发货前发该台实拍+编号确认，把"随机"带来的退款风险转成"专属感"。</p></div>
+</div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>促销玩法（抄对标店作业）</h2></div>
+<div class="tw"><table>
+<thead><tr><th>玩法</th><th>对标店实例</th><th>我们怎么用</th></tr></thead>
+<tbody>
+<tr><td><b>首件立减</b></td><td>许小儿"首件立减10元"→ 144/142</td><td>A档设首件立减10 → 179（正好=底线）；B档立减10 → 159（=底线）。用立减把标价守住、成交价触底</td></tr>
+<tr><td><b>多件折扣</b></td><td>许小儿 2件9.5折/3件9.3折/4件9折</td><td>直接照搬。二手微波炉常有出租房批量需求，多件折扣提客单</td></tr>
+<tr><td><b>满减</b></td><td>许小儿满180减9；高先生/静子满10减1</td><td>设"满180减9"，引导 A档单件或 B档凑单</td></tr>
+<tr><td><b>搭配购买</b></td><td>许小儿"搭配购买至少省9元"</td><td>微波炉 + 清洁布/置物架搭配，顺带消化赠品成本</td></tr>
+<tr><td><b>区域限制</b></td><td>零售店"只发江浙沪皖，商用别拍"</td><td>视物流成本决定是否跟进；至少把"商用/要求高别拍"写进标题降售后</td></tr>
+</tbody></table></div>
+</div>
+</div>
+
+<!-- 3 链接与上架 -->
+<div class="panel" id="listing">
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>链接结构：2 条成色档链接</h2></div>
+<div class="grid g2">
+<div class="card" style="border:2px solid var(--ok)"><div class="pill p-rec" style="margin-bottom:8px">链接1 · 主推</div><h3 style="font-size:16px">9成新（A档微瑕）</h3><ul class="chk"><li>库存 27 台可售</li><li>标价 ¥189 / 底线 179</li><li>定位利润款，主打成色好+清洗干净</li><li>标题含"9成新"，主图角标"9成新微瑕"</li></ul></div>
+<div class="card"><div class="pill p-b" style="margin-bottom:8px">链接2 · 走量</div><h3 style="font-size:16px">8成新（B档瑕疵/缺件）</h3><ul class="chk"><li>库存 59 台可售/已锁</li><li>标价 ¥169 / 底线 159</li><li>定位走量款，冲销量评价</li><li>详情披露瑕疵/缺件，主图展示瑕疵位</li></ul></div>
+</div>
+<div class="callout c-blue"><span class="ic">i</span><div><b>为什么合并成 2 条？</b>拼多多是链接权重逻辑，销量/评价/问大家/活动坑位都绑在链接上。一物一链接（每件仅剩1件）= 每条都从0开始，永远拿不到流量。98台无型号不影响——对标店也不写型号。</div></div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>标题公式（对标店套路）</h2></div>
+<div class="card"><p style="font-weight:700;margin-bottom:8px">公式：<span class="hl">二手/二旧 + 微波炉 + 家用 + 功能词 + 容量 + 制造卖点 + 限制条件</span></p>
+<div class="script" style="border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden"><div style="background:#f7f9fc;padding:8px 13px;font-size:13px;font-weight:700">A档 9成新 示例</div><pre style="white-space:pre-wrap;padding:13px;font-size:13.5px;font-family:inherit">二手微波炉家用智能平板23升不锈钢内胆 9成新微瑕 清洗干净 现货秒发 商用要求高别拍</pre></div>
+<div class="script" style="border:1px solid var(--line);border-radius:12px;overflow:hidden"><div style="background:#f7f9fc;padding:8px 13px;font-size:13px;font-weight:700">B档 8成新 示例</div><pre style="white-space:pre-wrap;padding:13px;font-size:13.5px;font-family:inherit">二旧微波炉家用机械转盘20升 8成新 外观有使用痕迹 功能完好 随机发货 退货包运费</pre></div>
+<ul class="dot" style="margin-top:12px"><li>功能词从对标店抄：机械转盘 / 智能平板 / 不锈钢内胆 / 微蒸一体 / 下拉门 / 光波烧烤</li><li>"9成新/8成新"是合规声明必须写；型号可写可不写（你有型号的那2台可写）</li><li>"随机发货"可用于B档（同成色档内），<b>但直播口播禁用该词</b>（治理公告明确针对直播）</li></ul>
+</div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>主图 5 张（学对标店真实感）</h2></div>
+<div class="grid g3">
+<div class="card"><div class="pill p-info">图1 首图</div><p class="mini" style="margin-top:6px">仓库堆货实拍 + 大字"清洗干净 回家直接用"。角标"9成新/8成新"。<b>不要精修白底图。</b></p></div>
+<div class="card"><div class="pill p-info">图2 成色</div><p class="mini" style="margin-top:6px">该档代表机细节特写，面板/门/外观，证明成色档。</p></div>
+<div class="card"><div class="pill p-mid">图3 瑕疵</div><p class="mini" style="margin-top:6px">主动展示典型瑕疵位置 + 文字"每台略有差异，随机发货"。</p></div>
+<div class="card"><div class="pill p-info">图4 功能</div><p class="mini" style="margin-top:6px">内胆洁净度 + 加热/转盘检测画面，打消"到手是坏的"顾虑。</p></div>
+<div class="card"><div class="pill p-info">图5 保障</div><p class="mini" style="margin-top:6px">"48小时发货 · 退货包运费 · 发货前实拍确认"说明图。</p></div>
+<div class="card"><div class="pill p-rec">短视频</div><p class="mini" style="margin-top:6px">15秒开箱/成色对比挂车——2026年多多视频是第一免费流量入口。</p></div>
+</div>
+</div>
+
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>详情页 + SKU 关键点</h2></div>
+<ul class="dot">
+<li><b>首屏声明：</b>"本店二手实拍，非全新。本件为9成新/8成新，功能检测完好"——合规底线。</li>
+<li><b>成色标准 + 瑕疵示例：</b>主动披露，降低描述不符退款。</li>
+<li><b>一物一况说明：</b>"下单后发本台实拍+编号，确认后发货"——把随机发的风险兜住。</li>
+<li><b>SKU：</b>全新与二手禁混挂；每条链接只放同一成色档；库存=实际可售台数，严禁虚设（防虚假发货扣分）。</li>
+<li><b>一物一码台账：</b>用渔集检修后码（QCHA261100xx）做唯一编号，发货确认与售后追溯全靠它。</li>
+</ul>
+</div>
+</div>
+
+<!-- 4 店铺矩阵 -->
+<div class="panel" id="matrix">
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>第一步：先把自家店改对</h2></div>
+<div class="tw"><table>
+<thead><tr><th>现状问题</th><th>整改动作</th><th>为什么</th></tr></thead>
+<tbody>
+<tr><td>店名"太阳味汽水s"</td><td>改名聚焦"二手家电/微波炉"；或重开新店</td><td>店铺名影响人群标签与搜索信任</td></tr>
+<tr><td>混卖洗地机、电磁炉</td><td>起步期只上微波炉，做垂直</td><td>对标店都是垂直单品；杂货铺标签乱、流量散</td></tr>
+<tr><td>标题用全新型号逻辑</td><td>按新标题公式重写全部商品</td><td>切进"二手微波炉"搜索词，规避以旧充新</td></tr>
+<tr><td>每件"仅剩1件"</td><td>改成2条成色档链接，合并库存</td><td>权重集中，才能积累销量评价</td></tr>
+<tr><td>0销量0评价</td><td>按冷启动破零（见下一Tab）</td><td>0数据的链接平台不扶持</td></tr>
+</tbody></table></div>
+</div>
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>第二步：矩阵（跑通单店后再谈）</h2></div>
+<div class="callout c-red"><span class="ic">!</span><div><b>铁律：先跑通1家，再复制。</b>矩阵店同主体/同设备/同网络/同收款账户/同发货地址/同款商品，任一重复可能被判关联或重复铺货，一店违规全店连坐。</div></div>
+<div class="tw"><table>
+<thead><tr><th>隔离项</th><th>做法</th><th>差异化定位</th></tr></thead>
+<tbody>
+<tr><td>主体</td><td>每店独立营业执照/手机号/收款账户</td><td>主力店：9成新精品，客单最高</td></tr>
+<tr><td>设备网络</td><td>一店一设备一网络，不同IP段</td><td>走量店：8成新性价比，批量多台上</td></tr>
+<tr><td>物流</td><td>不同发货/退货地址，不同快递账号</td><td>长尾店：按场景（出租房/宿舍）组织</td></tr>
+<tr><td>商品</td><td>不同货号段、赠品、主图风格</td><td>不同店错开型号/成色配比，避免重复铺货</td></tr>
+</tbody></table></div>
+</div>
+</div>
+
+<!-- 5 冷启动 -->
+<div class="panel" id="launch">
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>14 天冷启动（精简版）</h2></div>
+<div class="grid g4" style="margin-bottom:16px">
+<div class="stat"><div class="accent b"></div><div class="lbl">D1-3 准备</div><div class="val">打基础</div><div class="note">改店名+重写标题主图+后台设置</div></div>
+<div class="stat"><div class="accent o"></div><div class="lbl">D4-7 破零</div><div class="val">出首单</div><div class="note">首件立减+真实评价+问大家</div></div>
+<div class="stat"><div class="accent g"></div><div class="lbl">D8-11 拉权重</div><div class="val">冲销量</div><div class="note">多多视频+精准投放+活动</div></div>
+<div class="stat"><div class="accent r"></div><div class="lbl">D12-14 稳盘</div><div class="val">控投产</div><div class="note">验收KPI，定矩阵复制</div></div>
+</div>
+<div class="tw"><table>
+<thead><tr><th>阶段</th><th>关键动作</th><th>验收标准</th></tr></thead>
+<tbody>
+<tr><td><b>D1-3 准备</b></td><td>改店名/清杂货；2条链接上架（标题+5图+详情）；后台开运费险/48h发货/自动回复/偏远屏蔽；全链路查"最/第一"极限词</td><td>2条链接上线，SKU库存=实数</td></tr>
+<tr><td><b>D4-7 破零</b></td><td>首件立减触底价；多多进宝/新人券合规破零；引导真实带图评价；布局"问大家"（成色/功能/发货）；严禁刷单</td><td>出首单，各链接≥3条真实评价</td></tr>
+<tr><td><b>D8-11 拉权重</b></td><td>每天3-5条多多视频挂车；高转化款精准投放（日限额100-300）；报名新品扶持活动</td><td>体验分≥4.6，曝光稳步上涨</td></tr>
+<tr><td><b>D12-14 稳盘</b></td><td>投产<1缩预算；差评/退款即时处理；发货前实拍确认执行到位</td><td>日销≥5单，退款率≤8%</td></tr>
+</tbody></table></div>
+<div class="callout c-yellow"><span class="ic">!</span><div><b>体验分是生死线：</b>2026年拼多多流量分配中体验分权重60%+，低于4.5几乎无自然流量。核心公式：<b>成色如实标注 + 瑕疵主动披露 + 发货前实拍确认 + 运费险 = 低退款 = 高体验分 = 持续流量</b>。这也是我们比"纯随机发低价店"更稳的地方。</div></div>
+</div>
+</div>
+
+<!-- 6 批次 -->
+<div class="panel" id="batch">
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>嘉定微波炉（卢总）批次 · 按新定价落地</h2><span class="tag">渔集 WMS 批次 2611-02</span></div>
+<div class="grid g4">
+<div class="stat"><div class="accent b"></div><div class="lbl">已建档</div><div class="val">100 <span style="font-size:13px;color:var(--sub)">台</span></div><div class="note">预计150台</div></div>
+<div class="stat"><div class="accent g"></div><div class="lbl">A档9成新</div><div class="val">27 <span style="font-size:13px;color:var(--sub)">可售</span></div><div class="note">¥189 / 底179</div></div>
+<div class="stat"><div class="accent o"></div><div class="lbl">B档8成新</div><div class="val">59 <span style="font-size:13px;color:var(--sub)">可售/锁</span></div><div class="note">¥169 / 底159</div></div>
+<div class="stat"><div class="accent r"></div><div class="lbl">待测/已售</div><div class="val">9 / 5</div><div class="note">W档待检9，已售5</div></div>
+</div>
+<div class="callout c-orange"><span class="ic">i</span><div><b>货值测算（按新定价，成本未录无法算毛利）：</b>A档 27×189 = ¥5,103（底线成交 ¥4,833）；B档 59×169 = ¥9,971（底线成交 ¥9,381）。挂牌货值合计约 ¥15,074。补齐成本后即可算真实毛利。</div></div>
+</div>
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>上架前必补（3件事）</h2></div>
+<ul class="dot">
+<li><b>98台无型号</b>——按对标店套路可不补也能上架；但补齐型号/容量/功能词能让标题更精准、搜索流量更好（用进货Excel回填）。</li>
+<li><b>98台无成本</b>——成本合计¥374.75只是那2台待测机的（¥175+¥199.75）。补录成本才能核毛利、定让价底线是否还有空间。</li>
+<li><b>2台已锁 + 9台W档待检</b>——确认锁定原因；W档检测定级后再上架。B档瑕疵/缺件需逐台记录具体项，作为详情披露素材。</li>
+</ul>
+</div>
+<div class="sec"><div class="sec-h"><span class="bar"></span><h2>100 台逐台台账（可按档位筛选）</h2></div>
+<div class="filters">
+<button class="fbtn active" data-f="all">全部 100</button>
+<button class="fbtn" data-f="A">A档 9成新 (30)</button>
+<button class="fbtn" data-f="B">B档 8成新 (61)</button>
+<button class="fbtn" data-f="W">W档 待检 (9)</button>
+</div>
+<div class="tw" style="max-height:560px;overflow-y:auto"><table id="ledgerTable">
+<thead><tr><th>进货货号</th><th>显示编码</th><th>品牌型号</th><th>档位</th><th>成色</th><th>定价</th><th>状态</th><th>成本</th></tr></thead>
+<tbody>
+<tr data-gc='W'><td>2026111200001</td><td class='mono'>QC-HA-2611-0004</td><td>格兰仕(Galanz)变频微波炉烤箱一体机 900W速热家用23L不锈钢内胆 平板易清洁 省电一级能效光波烧烤 新款G90F23CSXLV-R6(B4)</td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td>199.75</td></tr>
+<tr data-gc='W'><td>2026111200002</td><td class='mono'>QC-HA-2611-0005</td><td>美的(Midea)微波炉EG7XCG3-NA 蒸立方 20L 平板 纳米银内胆 微电脑式光波烧烤一体机（下拉门）</td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td>175.00</td></tr>
+<tr data-gc='W'><td>2026111200003</td><td class='mono'>QC-HA-2611-0006</td><td><span class="miss">未录型号</span></td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='W'><td>2026111200004</td><td class='mono'>QC-HA-2611-0007</td><td><span class="miss">未录型号</span></td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='W'><td>2026111200005</td><td class='mono'>QC-HA-2611-0008</td><td><span class="miss">未录型号</span></td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='W'><td>2026111200006</td><td class='mono'>QC-HA-2611-0009</td><td><span class="miss">未录型号</span></td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='W'><td>2026111200007</td><td class='mono'>QC-HA-2611-0010</td><td><span class="miss">未录型号</span></td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='W'><td>2026111200008</td><td class='mono'>QC-HA-2611-0011</td><td><span class="miss">未录型号</span></td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='W'><td>2026111200009</td><td class='mono'>QC-HA-2611-0012</td><td><span class="miss">未录型号</span></td><td><span class="pill p-w">W待测</span></td><td>待检</td><td>—</td><td><span class="st-pend">待检</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200010</td><td class='mono'>QC-HA-2611-0013</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200011</td><td class='mono'>QC-HA-2611-0014</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200012</td><td class='mono'>QC-HA-2611-0015</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200013</td><td class='mono'>QC-HA-2611-0016</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200014</td><td class='mono'>QC-HA-2611-0017</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200015</td><td class='mono'>QC-HA-2611-0018</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200016</td><td class='mono'>QC-HA-2611-0019</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200017</td><td class='mono'>QC-HA-2611-0020</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200018</td><td class='mono'>QC-HA-2611-0021</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-sold">已售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200019</td><td class='mono'>QC-HA-2611-0022</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200020</td><td class='mono'>QC-HA-2611-0023</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200021</td><td class='mono'>QC-HA-2611-0024</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200022</td><td class='mono'>QC-HA-2611-0025</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200023</td><td class='mono'>QC-HA-2611-0026</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200024</td><td class='mono'>QC-HA-2611-0027</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200025</td><td class='mono'>QC-HA-2611-0028</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200026</td><td class='mono'>QC-HA-2611-0029</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200027</td><td class='mono'>QC-HA-2611-0030</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200028</td><td class='mono'>QC-HA-2611-0031</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-sold">已售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200029</td><td class='mono'>QC-HA-2611-0032</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200030</td><td class='mono'>QC-HA-2611-0033</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200031</td><td class='mono'>QC-HA-2611-0034</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200032</td><td class='mono'>QC-HA-2611-0035</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200033</td><td class='mono'>QC-HA-2611-0036</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200034</td><td class='mono'>QC-HA-2611-0037</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-sold">已售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200035</td><td class='mono'>QC-HA-2611-0038</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200036</td><td class='mono'>QC-HA-2611-0039</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200037</td><td class='mono'>QC-HA-2611-0040</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200038</td><td class='mono'>QC-HA-2611-0041</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200039</td><td class='mono'>QC-HA-2611-0042</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200040</td><td class='mono'>QC-HA-2611-0043</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200041</td><td class='mono'>QC-HA-2611-0044</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200042</td><td class='mono'>QC-HA-2611-0045</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200043</td><td class='mono'>QC-HA-2611-0046</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200044</td><td class='mono'>QC-HA-2611-0047</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200045</td><td class='mono'>QC-HA-2611-0048</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-sold">已售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200046</td><td class='mono'>QC-HA-2611-0049</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200047</td><td class='mono'>QC-HA-2611-0050</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200048</td><td class='mono'>QC-HA-2611-0051</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200049</td><td class='mono'>QC-HA-2611-0052</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200050</td><td class='mono'>QC-HA-2611-0053</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200051</td><td class='mono'>QC-HA-2611-0054</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200052</td><td class='mono'>QC-HA-2611-0055</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200053</td><td class='mono'>QC-HA-2611-0056</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200054</td><td class='mono'>QC-HA-2611-0057</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200055</td><td class='mono'>QC-HA-2611-0058</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200056</td><td class='mono'>QC-HA-2611-0059</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200057</td><td class='mono'>QC-HA-2611-0060</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200058</td><td class='mono'>QC-HA-2611-0061</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200059</td><td class='mono'>QC-HA-2611-0062</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200060</td><td class='mono'>QC-HA-2611-0063</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200061</td><td class='mono'>QC-HA-2611-0064</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200062</td><td class='mono'>QC-HA-2611-0065</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200063</td><td class='mono'>QC-HA-2611-0066</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200064</td><td class='mono'>QC-HA-2611-0067</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200065</td><td class='mono'>QC-HA-2611-0068</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200066</td><td class='mono'>QC-HA-2611-0069</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200067</td><td class='mono'>QC-HA-2611-0070</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200068</td><td class='mono'>QC-HA-2611-0071</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200069</td><td class='mono'>QC-HA-2611-0072</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200070</td><td class='mono'>QC-HA-2611-0073</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200071</td><td class='mono'>QC-HA-2611-0074</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200072</td><td class='mono'>QC-HA-2611-0075</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200073</td><td class='mono'>QC-HA-2611-0076</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200074</td><td class='mono'>QC-HA-2611-0077</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200075</td><td class='mono'>QC-HA-2611-0078</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200076</td><td class='mono'>QC-HA-2611-0079</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200077</td><td class='mono'>QC-HA-2611-0080</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200078</td><td class='mono'>QC-HA-2611-0081</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200079</td><td class='mono'>QC-HA-2611-0082</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200080</td><td class='mono'>QC-HA-2611-0083</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200081</td><td class='mono'>QC-HA-2611-0084</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200082</td><td class='mono'>QC-HA-2611-0085</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200083</td><td class='mono'>QC-HA-2611-0086</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200084</td><td class='mono'>QC-HA-2611-0087</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200085</td><td class='mono'>QC-HA-2611-0088</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-lock">已锁</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200086</td><td class='mono'>QC-HA-2611-0089</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-lock">已锁</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200087</td><td class='mono'>QC-HA-2611-0090</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200088</td><td class='mono'>QC-HA-2611-0091</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200089</td><td class='mono'>QC-HA-2611-0092</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200090</td><td class='mono'>QC-HA-2611-0093</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-sold">已售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200091</td><td class='mono'>QC-HA-2611-0094</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200092</td><td class='mono'>QC-HA-2611-0095</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200093</td><td class='mono'>QC-HA-2611-0096</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200094</td><td class='mono'>QC-HA-2611-0097</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200095</td><td class='mono'>QC-HA-2611-0098</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200096</td><td class='mono'>QC-HA-2611-0099</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200097</td><td class='mono'>QC-HA-2611-0100</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='A'><td>2026111200098</td><td class='mono'>QC-HA-2611-0101</td><td><span class="miss">未录型号</span></td><td><span class="pill p-g">A微瑕</span></td><td>9成新</td><td>¥189 <span class="floor">底179</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200099</td><td class='mono'>QC-HA-2611-0102</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+<tr data-gc='B'><td>2026111200100</td><td class='mono'>QC-HA-2611-0103</td><td><span class="miss">未录型号</span></td><td><span class="pill p-b">B瑕疵</span></td><td>8成新</td><td>¥169 <span class="floor">底159</span></td><td><span class="st-ok">可售</span></td><td><span class="miss">—</span></td></tr>
+</tbody></table></div>
+<p class="note-src">数据来源：渔集 WMS 批次 2611-02 实时台账，导出于 2026-11-18 11:20。完整版见独立文件"嘉定微波炉卢总批次_商品规整清单.html"。</p>
+</div>
+</div>
+
+<div class="footer">拼多多二手微波炉运营方案 · 精简版 V2.0 · 2026-11-18<br>价格与打法依据 9 张对标实拍截图；货品数据来自渔集 WMS。平台规则与活动门槛以商家后台公示为准。</div>
+</div>
+
+<div class="lightbox" id="lightbox"><img id="lbImg" src="" alt="对标截图"></div>
+
+<script>
+const tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
+tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.remove('active'));panels.forEach(p=>p.classList.remove('active'));t.classList.add('active');document.getElementById(t.dataset.t).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}));
+document.querySelectorAll('.fbtn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.f;document.querySelectorAll('#ledgerTable tbody tr').forEach(tr=>{tr.style.display=(f==='all'||tr.dataset.gc===f)?'':'none'})}));
+const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lbImg');
+document.querySelectorAll('.gitem').forEach(g=>g.addEventListener('click',()=>{lbImg.src=g.dataset.src;lb.classList.add('show')}));
+lb.addEventListener('click',()=>lb.classList.remove('show'));
+</script>
+</body></html>
